@@ -1,0 +1,32 @@
+{
+  "name": "meannasdaq",
+  "version": "1.0.0",
+  "description": "Learning MEAN stack project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbristol85/meanNasdaq.git"
+  },
+  "keywords": [
+    "MEAN",
+    "NASDAQ"
+  ],
+  "author": "Josh Bristol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbristol85/meanNasdaq/issues"
+  },
+  "homepage": "https://github.com/jbristol85/meanNasdaq#readme",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-route": "^1.6.9",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.2",
+    "mongoose": "^5.0.6"
+  }
+}
