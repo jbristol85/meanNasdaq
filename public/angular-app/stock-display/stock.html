@@ -1,0 +1,8 @@
+<h1>Stock : {{ vm.stock.Name }}</h1> 
+
+<h3>Symbol : {{ vm.stock.Symbol }}</h3>
+<p>Industry : {{ vm.stock.industry }}</p>
+<p>Sector : {{ vm.stock.Sector }}</p>
+<p>IPOyear : {{ vm.stock.IPOyear | date: "yyyy" }}</p>
+<p> Last Sale Price : {{ vm.stock.LastSale }}</p>
+<p>More Information can be found <a href='{{ vm.stock.StockUrl }}' target='_blank'>here</a></p>

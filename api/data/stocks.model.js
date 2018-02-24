@@ -1,5 +1,19 @@
 var mongoose = require('mongoose');
-	
+
+	var commentSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: true
+	},
+	comment: {
+		type: String,
+		required: true
+	},
+	createdOn:{
+		type: Date,
+		"default": Date.now
+	}
+});
 	var stockSchema = new mongoose.Schema({
 		Symbol: {
 			type: String,
@@ -26,7 +40,8 @@ var mongoose = require('mongoose');
 		},
 		'Summary Quote':{
 			type: String
-		}
+		},
+		comments:[commentSchema]
 	});
 	
 	mongoose.model("Stock", stockSchema);
