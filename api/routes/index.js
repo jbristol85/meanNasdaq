@@ -4,6 +4,7 @@ var router = express.Router();
 var ctrlStocks = require('../controllers/stocks.controllers.js');
 var ctrlUsers = require('../controllers/users.controllers.js');
 var ctrlComments = require('../controllers/comments.controllers.js');
+var ctrlSearch = require('../controllers/search.controllers.js');
 
 router
 	.route('/stocks')
@@ -32,5 +33,10 @@ router
 router
 	.route('/users/login')
 	.post(ctrlUsers.login);
+	
+router	
+	.route('/stocks/:searchTerm')
+	.get(ctrlStocks.searchGetOne)
+	// .post(ctrlStocks.searchGetOne);
 	
 	module.exports= router;

@@ -6,3 +6,19 @@
 <p>IPOyear : {{ vm.stock.IPOyear | date: "yyyy" }}</p>
 <p> Last Sale Price : {{ vm.stock.LastSale }}</p>
 <p>More Information can be found <a href='{{ vm.stock.StockUrl }}' target='_blank'>here</a></p>
+
+<h3>Comments</h3>
+<ul>
+    <li ng-repeat="comment in vm.stock.comments">{{ comment.name }} says: "{{ comment.comment }}" on {{ comment.createdOn | date }}</li>
+</ul>
+
+<div ng-if="vm.isLoggedIn()">
+    <form name="vm.commentForm" class="form-inline ml-auto" ng-submit="vm.addComment()">
+       Your Comment: <textarea name="comment" required ng-model="vm.comment"></textarea>
+        <div ng-show="vm.commentForm.comment.$dirty && vm.isSubmitted">
+            <p>Please add a comment</p>
+        </div>
+
+        <button type="submit" class="btn">Add Comment</button>
+    </form>
+</div>

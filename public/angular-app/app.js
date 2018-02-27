@@ -1,4 +1,4 @@
-/* global angular StocksController StockController RegisterController*/
+/* global angular StocksController StockController SearchController RegisterController*/
 angular.module('meannasdaq',['ngRoute', 'angular-jwt']).config(config).run(run);
 
 function config($routeProvider, $httpProvider){
@@ -40,6 +40,12 @@ function config($routeProvider, $httpProvider){
 			access: {
 				restricted: true
 			}
+		})
+		.when('/stocks/:searchTerm', {
+			// redirectTo:'/stock/:id'
+			templateUrl:'angular-app/searched/searched.html',
+			controller: SearchController,
+			controllerAs: 'vm',
 		})
 		.otherwise({
 			redirectTo:'/'

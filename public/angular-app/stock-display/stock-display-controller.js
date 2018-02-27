@@ -31,7 +31,7 @@ vm.addComment = function(){
 			name: username,
 			comment: vm.comment
 		};
-		if(vm.reviewForm.$valid){
+		if(vm.commentForm.$valid){
 			stockDataFactory.postComment(id, postData).then(function(response){
 				console.log(response);
 				if(response.status === 201){

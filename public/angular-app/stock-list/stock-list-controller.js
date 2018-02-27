@@ -9,3 +9,5 @@ function StocksController(stockDataFactory){
 		vm.stocks = response.data;
 	});
 }
+
+//, ['angularUtils.directives.dirPagination']

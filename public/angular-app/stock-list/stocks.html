@@ -1,5 +1,40 @@
 <h1>{{ vm.title }}</h1>
+<stock-search></stock-search>
+<!-- <form ng-controller='SearchController as vm' class="form-inline ml-auto" ng-submit="vm.search()">-->
+<!-- 	<div class="form-group">-->
+<!--        <input type="search" class="form-control form-control-sm" placeholder="Search"-->
+<!--        ng-model="vm.searchTerm" name="searchTerm" autocapitalize>-->
+<!--    </div>-->
+<!--    <button type="submit" class="btn btn-sm btn-success">Search</button>-->
+<!--</form>-->
 
+
+<!--<div ng-if='vm.isSubmitted'>-->
+<!--	<h1>Stock : {{ vm.stock.Name }}</h1> -->
+
+<!--<h3>Symbol : {{ vm.stock.Symbol }}</h3>-->
+<!--<p>Industry : {{ vm.stock.industry }}</p>-->
+<!--<p>Sector : {{ vm.stock.Sector }}</p>-->
+<!--<p>IPOyear : {{ vm.stock.IPOyear | date: "yyyy" }}</p>-->
+<!--<p> Last Sale Price : {{ vm.stock.LastSale }}</p>-->
+<!--<p>More Information can be found <a href='{{ vm.stock.StockUrl }}' target='_blank'>here</a></p>-->
+
+<!--<h3>Comments</h3>-->
+<!--<ul>-->
+<!--    <li ng-repeat="comment in vm.stock.comments">{{ comment.name }} says: "{{ comment.comment }}" on {{ comment.createdOn | date }}</li>-->
+<!--</ul>-->
+
+<!--<div ng-if="vm.isLoggedIn()">-->
+<!--    <form name="vm.commentForm" class="form-inline ml-auto" ng-submit="vm.addComment()">-->
+<!--       Your Comment: <textarea name="comment" required ng-model="vm.comment"></textarea>-->
+<!--        <div ng-show="vm.commentForm.comment.$dirty && vm.isSubmitted">-->
+<!--            <p>Please add a comment</p>-->
+<!--        </div>-->
+
+<!--        <button type="submit" class="btn">Add Comment</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</div>-->
 <ul>
     <li ng-repeat="stock in vm.stocks"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>
 </ul>

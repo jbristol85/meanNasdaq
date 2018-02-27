@@ -1,0 +1,7 @@
+ <form ng-controller='SearchController as vm' class="form-inline ml-auto" ng-submit="vm.search()">
+ 	<div class="form-group">
+        <input type="search" class="form-control form-control-sm" placeholder="Search"
+        ng-model="vm.searchTerm" name="searchTerm" autocapitalize>
+    </div>
+    <button type="submit" class="btn btn-sm btn-success">Search</button>
+</form>
