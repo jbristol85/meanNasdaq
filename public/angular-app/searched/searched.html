@@ -1,2 +1,6 @@
-<h1>Searched</h1>
-<h1>{{ vm.stock.Name }}</h1>
+<div>
+	<h1>Searched</h1>
+<ul>
+    <li><a ng-href="#!/stock/{{ vm.stock._id }}">{{ vm.stock.Symbol }}  :  {{ vm.stock.Name }}</a></li>
+</ul>
+</div>

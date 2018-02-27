@@ -18,6 +18,7 @@ ng-init="vm.init()">
                 class="nav-item"><a href="#!/profile" class="nav-link">Profile</a>
                 </li>
             </ul>
+            <stock-search></stock-search>
             <form ng-if="!vm.isLoggedIn()" class="form-inline ml-auto" role="login"
             ng-submit="vm.login()">
                 <div class="form-group" ng-class="{'has-error' : vm.error}">
