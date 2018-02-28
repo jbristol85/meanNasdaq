@@ -22,6 +22,7 @@ function SearchController($http, $window, $location, stockDataFactory){
 			console.log("vm.search response.data", response.data);
 			
 			vm.stock = response.data
+			
 			var id = response.data[0]._id
 			console.log("vm.search id", id)
 			$location.path('/search/' + id)

@@ -1,7 +1,7 @@
 /* global angular */
 angular.module('meannasdaq').controller('StockController', StockController);
 
-function StockController ($route, $routeParams, stockDataFactory, AuthFactory, $window, jwtHelper){
+function StockController ($route, $routeParams, $location, $window, stockDataFactory, AuthFactory, jwtHelper){
 	var vm = this;
 	var id = $routeParams.id;
 	vm.isSubmitted = false;
@@ -43,6 +43,22 @@ vm.addComment = function(){
 		}else{
 			vm.isSubmitted = true;
 		}
-}
+};
+
+	vm.save = function(){
+		var token = jwtHelper.decodeToken($window.sessionStorage.token);
+		var username = token.username;
+		var saveId = {savedId : $routeParams.id};
+		console.log('saveId', saveId);
+		console.log('username', username);
+		stockDataFactory.postSave(username, saveId).then(function(response){
+			console.log("vm.save response.data", response);
+		
+			
+		}).catch(function(err){
+			console.log(err);
+		});
+	
+	};
 
 }

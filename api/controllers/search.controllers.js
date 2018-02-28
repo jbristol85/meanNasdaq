@@ -1,9 +1,26 @@
-var mongoose = require('mongoose');
-var Search = mongoose.model('Search');
+// var mongoose = require('mongoose');
+// var Search = mongoose.model('Search');
 
-module.exports.searchGetOne = function(req, res){
-	var searchTerm = req.params.searchTerm;
-	console.log("GET searchTerm" , searchTerm);
+// module.exports.saveSearch = function(req, res){
+// 	var stockId = req.body.stockId;
+// 	console.log("POST save stockId");
+	
+
+	
+// 	Search.create({
+// 		searchSymbol: stockId
+// 	}, function(err, search){
+// 		console.log(search);
+// 		if(err){
+// 			console.log(err);
+// 			res.status(400).json(err);
+// 		}else {
+// 			console.log('Search Saved', search);
+// 			res.status(201).json(search);
+// 		}
+// 	});
+// };
+
 	
 	// Search
 	// 	.findOne({Symbol : searchTerm})
@@ -26,4 +43,3 @@ module.exports.searchGetOne = function(req, res){
 	// 				.json(stock);
 	// 		}
 	// 	});
-};

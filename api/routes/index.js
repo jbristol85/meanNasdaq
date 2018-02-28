@@ -4,7 +4,7 @@ var router = express.Router();
 var ctrlStocks = require('../controllers/stocks.controllers.js');
 var ctrlUsers = require('../controllers/users.controllers.js');
 var ctrlComments = require('../controllers/comments.controllers.js');
-var ctrlSearch = require('../controllers/search.controllers.js');
+// var ctrlSearch = require('../controllers/search.controllers.js');
 
 router
 	.route('/stocks')
@@ -36,7 +36,19 @@ router
 	
 router	
 	.route('/stocks/:searchTerm')
-	.get(ctrlStocks.searchGetOne)
+	.get(ctrlStocks.searchGetOne);
 	// .post(ctrlStocks.searchGetOne);
+	
+router
+	.route('/users/:user/save')
+	// .get(ctrlUsers.getSavedStocks)
+	.post(ctrlUsers.savedStock);
+	
+// router
+// 	.route('/users/:user/saved')
+// 	.get(ctrlUsers.getSavedStocks)
+// router
+// 	.route('/save/:stockId')
+// 	.post(ctrlSearch.saveSearch);
 	
 	module.exports= router;

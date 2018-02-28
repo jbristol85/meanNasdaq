@@ -66,3 +66,89 @@ module.exports.authenticate = function(req, res, next){
 	}
 	
 };
+
+
+	var _addSaved = function(req, res, user) {
+	// console.log('_addSaved', req.body);
+	user.saved.push({
+		savedStock : req.body.savedId
+	});
+	user.save(function(err, userUpdated) {
+		if (err) {
+			res
+				.status(500)
+				.json(err);
+		}
+		else {
+			res
+				.status(201)
+				.json(userUpdated.saved[userUpdated.saved.length -1]);
+		}
+	});
+};
+
+module.exports.savedStock = function(req, res){
+	console.log(" POST savedStock", req.params);
+	
+	var username = req.params.user;
+	console.log('username', username);
+	
+
+	User
+		.findOne({username: username})
+		// .select(-password)
+		.exec(function(err, doc) {
+			console.log(doc);
+		
+			if (err) {
+				console.log("Error finding saved");
+				res
+					.status(500)
+					.json(err);
+			}
+			else if (!doc) {
+				console.log("Saved not in database");
+					res
+					.status(404)
+					.json({
+						"message": "search not found " + doc
+					});
+				
+			}
+			if (doc) {
+				_addSaved(req, res, doc);
+			}
+			// else {
+			// 	res
+			// 		.status(200)
+			// 		.json(doc);
+			// }
+		});
+module.exports.getSavedStocks = function(req, res){
+		var username = req.params.user;
+		User
+			.findOne({username: username})
+			.exec(function(err, doc){
+				if (err) {
+				console.log("Error finding saved");
+				res
+					.status(500)
+					.json(err);
+			}	else if (!doc) {
+				console.log("Saved not in database");
+					res
+					.status(404)
+					.json({
+						"message": "search not found " + doc
+					});
+				
+			}
+			if (doc) {
+				res
+					.status(200)
+					.json(doc);
+			} 
+			})
+	};
+};
+

@@ -1,5 +1,7 @@
 <h1>Stock : {{ vm.stock.Name }}</h1> 
-
+ <form  class="form-inline ml-auto" ng-submit="vm.save()">
+  <button class="btn btn-sm btn-success">Save</button>
+</form>
 <h3>Symbol : {{ vm.stock.Symbol }}</h3>
 <p>Industry : {{ vm.stock.industry }}</p>
 <p>Sector : {{ vm.stock.Sector }}</p>

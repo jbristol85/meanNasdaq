@@ -1,5 +1,28 @@
 var mongoose = require('mongoose');
 
+var searchSchema = new mongoose.Schema({
+	stockId: {
+		type: String,
+		required: true
+	},
+	createdOn:{
+		type: Date,
+		"default": Date.now
+	}
+});
+
+
+var savedSchema = new mongoose.Schema({
+		savedStock: {
+		type: String
+	},
+		createdOn:{
+		type: Date,
+		"default": Date.now
+		}
+});
+
+
 var userSchema = new mongoose.Schema({
 	username:{
 		type: String,
@@ -12,7 +35,9 @@ var userSchema = new mongoose.Schema({
 	password:{
 		type:String,
 		required: true
-	}
+	},
+	searches: [searchSchema],
+	saved: [savedSchema]
 });
 
 mongoose.model('User', userSchema);

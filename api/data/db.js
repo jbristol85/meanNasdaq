@@ -39,4 +39,4 @@ process.once("SIGUSR2", function(){
 // bring in schema and models
 require('./stocks.model');
 require('./users.model');
-require('./search.model');
+// require('./search.model');
