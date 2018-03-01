@@ -48,7 +48,9 @@ vm.addComment = function(){
 	vm.save = function(){
 		var token = jwtHelper.decodeToken($window.sessionStorage.token);
 		var username = token.username;
-		var saveId = {savedId : $routeParams.id};
+		console.log('routeParams', $routeParams)
+		var saveId = {savedId : $routeParams.id, saveSymbol:$routeParams.Symbol};
+		
 		console.log('saveId', saveId);
 		console.log('username', username);
 		stockDataFactory.postSave(username, saveId).then(function(response){

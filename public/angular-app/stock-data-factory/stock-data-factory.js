@@ -34,9 +34,9 @@ function stockDataFactory($http){
 		console.log('getUser', username);
 		return $http.get('/api/users/'+ username).then(complete).catch(failed);
 	}
-	function postSave(username, saveId){
-		console.log('postSave', username, saveId);
-		return $http.post('/api/users/'+ username + '/save/', saveId).then(complete).catch(failed);
+	function postSave(username, saveId, saveSymbol){
+		console.log('postSave', username, saveId, saveSymbol);
+		return $http.post('/api/users/'+ username + '/saveId/'+ saveId + '/saveSymbol/' + saveSymbol).then(complete).catch(failed);
 	}
 	function complete(response){
 		console.log(response);
