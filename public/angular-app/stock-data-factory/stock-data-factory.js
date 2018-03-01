@@ -28,7 +28,7 @@ function stockDataFactory($http){
 	}
 	function postSearches(username, searchId, searchSymbol){
 		console.log('postSearches', username, searchId);
-		return $http.post('/api/users/'+ username + '/saveSearch/'+ searchId, searchSymbol).then(complete).catch(failed);
+		return $http.post('/api/users/'+ username + '/searchid/'+ searchId+'/searchsymbol/' + searchSymbol).then(complete).catch(failed);
 	}
 	function getUser(username){
 		console.log('getUser', username);

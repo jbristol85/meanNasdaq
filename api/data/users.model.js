@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 
 var searchSchema = new mongoose.Schema({
-	savedSearch: {
+	savedSearchId: {
+		type: String,
+		required: true
+	},
+	savedSearchSymbol: {
 		type: String,
 		required: true
 	},

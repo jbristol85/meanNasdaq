@@ -20,7 +20,7 @@ function SearchController($http, $window, $location, $routeParams, stockDataFact
 		var username = token.username;
 		console.log('username', username);
 		var searchTerm = vm.searchTerm.toUpperCase();
-		var searchId;
+		var searchId, searchSymbol;
 		console.log('searchTerm', searchTerm);
 		stockDataFactory.getSearch(searchTerm).then(function(response) {
 			console.log("vm.search response.data", response.data);
@@ -29,7 +29,8 @@ function SearchController($http, $window, $location, $routeParams, stockDataFact
 
 			var id = response.data[0]._id;
 			searchId = id;
-			console.log('searchId', searchId);
+			searchSymbol = response.data[0].Symbol
+			console.log('searchId', searchId, searchSymbol);
 			
 			console.log("vm.search id", id);
 			$location.path('/search/' + id);
@@ -37,7 +38,7 @@ function SearchController($http, $window, $location, $routeParams, stockDataFact
 			// var searchId = id;
 
 			
-			stockDataFactory.postSearches(username, searchId).then(function(response) {
+			stockDataFactory.postSearches(username, searchId, searchSymbol).then(function(response) {
 				console.log("postSearches response.data", response);
 
 

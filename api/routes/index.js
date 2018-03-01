@@ -53,7 +53,7 @@ router
 	.post(ctrlUsers.savedStock);
 
 router
-	.route('/users/:user/saveSearch/:searchId')
+	.route('/users/:user/searchid/:searchId/searchsymbol/:searchSymbol')
 	.post(ctrlUsers.saveSearch);
 // router
 // 	.route('/users/:user/saved')
