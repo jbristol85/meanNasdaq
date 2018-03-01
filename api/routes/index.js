@@ -37,13 +37,24 @@ router
 router	
 	.route('/stocks/:searchTerm')
 	.get(ctrlStocks.searchGetOne);
+	// .post(ctrlUsers.savedSearch);
 	// .post(ctrlStocks.searchGetOne);
+router
+	.route('/users/:user')
+	.get(ctrlUsers.getUser);
+	
+// router
+// 	.route('/users/:user/savedSearches')
+// 	.get(ctrlUsers.userSearched)
 	
 router
 	.route('/users/:user/save')
 	// .get(ctrlUsers.getSavedStocks)
 	.post(ctrlUsers.savedStock);
-	
+
+router
+	.route('/users/:user/saveSearch/:searchId')
+	.post(ctrlUsers.saveSearch);
 // router
 // 	.route('/users/:user/saved')
 // 	.get(ctrlUsers.getSavedStocks)

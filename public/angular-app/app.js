@@ -1,5 +1,5 @@
-/* global angular StocksController StockController SearchedController RegisterController*/
-angular.module('meannasdaq',['ngRoute', 'angular-jwt']).config(config).run(run);
+/* global angular StocksController StockController ProfileController SearchedController RegisterController*/
+angular.module('meannasdaq',['ngRoute', 'angular-jwt', 'angularUtils.directives.dirPagination']).config(config).run(run);
 
 function config($routeProvider, $httpProvider){
 	$httpProvider.interceptors.push('AuthInterceptor');
@@ -37,6 +37,8 @@ function config($routeProvider, $httpProvider){
 		})
 		.when('/profile', {
 			templateUrl: 'angular-app/profile/profile.html',
+			controller: ProfileController,
+			controllerAs: 'vm',
 			access: {
 				restricted: true
 			}

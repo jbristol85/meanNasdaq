@@ -1,6 +1,13 @@
 <h1>{{ vm.title }}</h1>
 <!--<stock-search></stock-search>-->
 
+<!--<ul>-->
+<!--    <li ng-repeat="stock in vm.stocks"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>-->
+<!--</ul>-->
+
 <ul>
-    <li ng-repeat="stock in vm.stocks"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>
+    <li dir-paginate="stock in vm.stocks | filter: q | itemsPerPage: 25"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>
 </ul>
+
+
+<dir-pagination-controls></dir-pagination-controls>

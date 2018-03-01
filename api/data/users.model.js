@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var searchSchema = new mongoose.Schema({
-	stockId: {
+	savedSearch: {
 		type: String,
 		required: true
 	},

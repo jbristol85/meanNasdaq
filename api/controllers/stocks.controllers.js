@@ -10,10 +10,10 @@ module.exports.stocksGetAll = function(req, res){
 	var maxCount = 30;
 	
 	
-	Stock
+	Stock 
 		.find()
-		.skip(offset)
-		.limit(count)
+		// .skip(offset)
+		// .limit(count)
 		.exec(function(err, stocks){
 			if (err){
 				console.log('Error finding Stocks');
