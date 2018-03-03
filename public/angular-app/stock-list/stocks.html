@@ -1,13 +1,28 @@
-<h1>{{ vm.title }}</h1>
+<h1 class="text-center">{{ vm.title }}</h1>
 <!--<stock-search></stock-search>-->
 
 <!--<ul>-->
 <!--    <li ng-repeat="stock in vm.stocks"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>-->
 <!--</ul>-->
 
-<ul>
-    <li dir-paginate="stock in vm.stocks | filter: q | itemsPerPage: 25"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>
-</ul>
+<!--<ul>-->
+<!--    <li dir-paginate="stock in vm.stocks | itemsPerPage: 25"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>-->
+<!--</ul>-->
 
+<input ng-model="search" placeholder="search" class="centerOnPage">
+<table>
+        <tr class="text-center">
+                <td>Symbol</td>
+                <td>Company</td>
+                <td>Sector</td>
+        </tr>
 
-<dir-pagination-controls></dir-pagination-controls>
+        <tr dir-paginate="stock in vm.stocks  | filter:search | itemsPerPage: 25" >
+                <td><a ng-href="#!/stock/{{ stock._id }}" class="tdPadding">{{ stock.Symbol }}</a></td>
+                <td><a ng-href="#!/stock/{{ stock._id }}" class="tdPadding">{{ stock.Name }}</a></td>
+                <td><a ng-href="#!/stock/{{ stock._id }}"class="tdPadding">{{ stock.Sector }}</a></td>
+        </tr>
+
+</table>
+<br>
+<dir-pagination-controls class="text-center"></dir-pagination-controls>
