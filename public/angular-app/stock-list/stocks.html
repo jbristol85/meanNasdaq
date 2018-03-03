@@ -1,3 +1,4 @@
+
 <h1 class="text-center">{{ vm.title }}</h1>
 <!--<stock-search></stock-search>-->
 
@@ -8,9 +9,10 @@
 <!--<ul>-->
 <!--    <li dir-paginate="stock in vm.stocks | itemsPerPage: 25"><a ng-href="#!/stock/{{ stock._id }}">{{ stock.Symbol }}  :  {{ stock.Name }}</a></li>-->
 <!--</ul>-->
-
-<input ng-model="search" placeholder="search" class="centerOnPage">
-<table>
+<br>
+<input ng-model="search" placeholder="search" class=" centerOnPage centerBlock">
+<br>
+<table class="centerOnPage">
         <tr class="text-center">
                 <td>Symbol</td>
                 <td>Company</td>
@@ -25,4 +27,6 @@
 
 </table>
 <br>
-<dir-pagination-controls class="text-center"></dir-pagination-controls>
+<div class="text-center">
+<dir-pagination-controls ></dir-pagination-controls>
+</div>
