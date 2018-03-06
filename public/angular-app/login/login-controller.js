@@ -13,6 +13,7 @@ function LoginController ($http, $location, $window, AuthFactory, jwtHelper){
 	};
 
 vm.login = function(){
+	console.log("vm.login")
 	if(vm.username && vm.password){
 		var user= {
 			username: vm.username,

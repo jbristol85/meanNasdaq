@@ -6,7 +6,7 @@
     <li ng-repeat="search in vm.data.searches"><a ng-href="#!/stock/{{ search.savedSearchId }}">{{ search.savedSearchSymbol }}</a></li>
 </ul>
 
-<h2>Previous Searches</h2>
+<h2>Saved Stocks</h2>
 
 <ul>
     <li ng-repeat="search in vm.data.saved"><a ng-href="#!/stock/{{ search.savedSearch }}">{{ search.savedSearchSymbol }}</a></li>
