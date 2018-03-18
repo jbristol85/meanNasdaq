@@ -3,6 +3,7 @@ angular.module('meannasdaq').controller("LoginController", LoginController);
 
 function LoginController ($http, $location, $window, AuthFactory, jwtHelper){
 	var vm = this;
+	vm.logginginError = false;
 	
 	vm.isLoggedIn = function(){
 		if(AuthFactory.isLoggedIn){
@@ -23,6 +24,7 @@ vm.login = function(){
 		$http.post('/api/users/login', user).then(function(response){
 			// console.log(response);
 			if(response.data.success){
+				vm.logginginError = false;
 			$window.sessionStorage.token = response.data.token;
 			AuthFactory.isLoggedIn = true;
 			var token = $window.sessionStorage.token;
@@ -31,6 +33,7 @@ vm.login = function(){
 			}
 		}).catch(function(error){
 			console.log(error);
+			vm.logginginError = true;
 		});
 	}
 };

@@ -45,4 +45,4 @@ function stockDataFactory($http){
 	function failed(error){
 		console.log(error.statusText);
 	}
-}
+} 

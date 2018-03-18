@@ -55,6 +55,11 @@ router
 router
 	.route('/users/:user/searchid/:searchId/searchsymbol/:searchSymbol')
 	.post(ctrlUsers.saveSearch);
+
+router
+	.route('/users/:user/saveId/:saveId/saveSymbol/:saveSymbol')
+	.post(ctrlUsers.savedStock);	
+	
 // router
 // 	.route('/users/:user/saved')
 // 	.get(ctrlUsers.getSavedStocks)

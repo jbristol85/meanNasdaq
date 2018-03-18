@@ -3,11 +3,11 @@
 <h2>Previous Searches</h2>
 
 <ul>
-    <li ng-repeat="search in vm.data.searches"><a ng-href="#!/stock/{{ search.savedSearchId }}">{{ search.savedSearchSymbol }}</a></li>
+    <li ng-repeat="search in vm.searches"><a ng-href="#!/stock/{{ search.savedSearchId }}">{{ search.savedSearchSymbol }}</a></li>
 </ul>
 
 <h2>Saved Stocks</h2>
 
 <ul>
-    <li ng-repeat="search in vm.data.saved"><a ng-href="#!/stock/{{ search.savedSearch }}">{{ search.savedSearchSymbol }}</a></li>
+    <li ng-repeat="saved in vm.saved"><a ng-href="#!/stock/{{ saved.savedId }}">{{ saved.savedSymbol }}</a></li>
 </ul>

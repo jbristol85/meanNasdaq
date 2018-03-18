@@ -46,14 +46,16 @@ vm.addComment = function(){
 };
 
 	vm.save = function(){
+		console.log("vm.stock", vm.stock)
 		var token = jwtHelper.decodeToken($window.sessionStorage.token);
 		var username = token.username;
-		console.log('routeParams', $routeParams)
-		var saveId = {savedId : $routeParams.id, saveSymbol:$routeParams.Symbol};
-		
+		console.log('rou', $routeParams)
+		// var saveId = {savedId : $routeParams.id, saveSymbol:$routeParams.symbol};
+		var saveId = vm.stock._id;
+		var saveSymbol = vm.stock.Symbol;
 		console.log('saveId', saveId);
 		console.log('username', username);
-		stockDataFactory.postSave(username, saveId).then(function(response){
+		stockDataFactory.postSave(username, saveId, saveSymbol).then(function(response){
 			console.log("vm.save response.data", response);
 		
 			

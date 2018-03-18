@@ -9,10 +9,10 @@ function ProfileController ($route, $routeParams, $location, $window, stockDataF
 		console.log("ProfileController", response);
 		
 		vm.data = response.data;
-		var saved = response.data.saved;
-		var searches = response.data.searches;
-		console.log("saved", saved);
-		console.log('searched', searches);
+		vm.saved = response.data.saved;
+		vm.searches = response.data.searches;
+		console.log("vm.saved", vm.saved);
+		console.log('vm.searches', vm.searches);
 	// for(var i = 0; i<saved.length; i++){
 	// 	var savedSearches = saved[i].savedSearch;
 	// 	stockDataFactory.stockDisplay(savedSearches).then(function(data){

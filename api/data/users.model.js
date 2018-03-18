@@ -17,9 +17,12 @@ var searchSchema = new mongoose.Schema({
 
 
 var savedSchema = new mongoose.Schema({
-		savedStock: {
+		savedId: {
 		type: String
 	},
+		savedSymbol:{
+			type: String
+		},
 		createdOn:{
 		type: Date,
 		"default": Date.now

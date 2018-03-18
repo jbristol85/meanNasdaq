@@ -18,7 +18,7 @@ ng-init="vm.init()">
                 class="nav-item"><a href="#!/profile" class="nav-link">Profile</a>
                 </li>
             </ul>
-            <stock-search></stock-search>
+            <stock-search ng-if="vm.isLoggedIn()"></stock-search>
             <form ng-if="!vm.isLoggedIn()" class="form-inline ml-auto" role="login"
             ng-submit="vm.login()">
                 <div class="form-group" ng-class="{'has-error' : vm.error}">
@@ -30,7 +30,10 @@ ng-init="vm.init()">
                     ng-model="vm.password" autocapitalize="none">
                 </div>
                 <button type="submit" class="btn btn-sm btn-success" >Login</button>
+              
             </form>
+            <br>
+            <p ng-if="vm.logginginError" style="color:red">Check username and password</p>
             <ul ng-if="vm.isLoggedIn()" class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                     <p class="navbar-text">Welcome back, {{ vm.loggedInUser }}</p>

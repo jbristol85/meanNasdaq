@@ -73,196 +73,245 @@ module.exports.authenticate = function(req, res, next) {
 
 };
 
-
-var _addSaved = function(req, res, user) {
-	// console.log('_addSaved', req.body);
-	user.saved.push({
-		savedStock: req.body.savedId
-	});
-	user.save(function(err, userUpdated) {
-		if (err) {
-			res
-				.status(500)
-				.json(err);
-		}
-		else {
-			res
-				.status(201)
-				.json(userUpdated.saved[userUpdated.saved.length - 1]);
-		}
-	});
-};
-
 module.exports.savedStock = function(req, res) {
-	console.log(" POST savedStock", req.params);
+		console.log("saveStock body", req.params);
 
-	var username = req.params.user;
-	console.log('username', username);
+		var username = req.params.user;
+		console.log('username', username);
 
-
-	User
-		.findOne({ username: username })
-		// .select(-password)
-		.exec(function(err, doc) {
-			console.log(doc);
-
-			if (err) {
-				console.log("Error finding saved");
-				res
-					.status(500)
-					.json(err);
-			}
-			else if (!doc) {
-				console.log("Saved not in database");
-				res
-					.status(404)
-					.json({
-						"message": "search not found " + doc
-					});
-
-			}
-			if (doc) {
-				_addSaved(req, res, doc);
-			}
-			// else {
-			// 	res
-			// 		.status(200)
-			// 		.json(doc);
-			// }
-		});
-};
-module.exports.getUser = function(req, res) {
-	var username = req.params.user;
-	User
-		.findOne({ username: username })
-		.exec(function(err, doc) {
-			if (err) {
-				console.log("Error finding saved");
-				res
-					.status(500)
-					.json(err);
-			}
-			else if (!doc) {
-				console.log("Saved not in database");
-				res
-					.status(404)
-					.json({
-						"message": "search not found " + doc
-					});
-
-			}
-			if (doc) {
-				res
-					.status(200)
-					.json(doc);
-			}
-		});
-};
-
-// var _addSearch = function(req, res, user) {
-// 	// console.log('_addSaved', req.body);
-// 	user.searches.push({
-// 		savedSearchId: req.params.searchId,
-// 		savedSearchSymbol: req.params.searchSymbol
-// 	});
-
-// 	user.save(function(err, userUpdated) {
-// 		if (err) {
-// 			res
-// 				.status(500)
-// 				.json(err);
-// 		}
-// 		else {
-// 			res
-// 				.status(201)
-// 				.json(userUpdated.searches[userUpdated.searches.length - 1]);
-// 		}
-// 	});
-// };
-
-module.exports.saveSearch = function(req, res) {
-	console.log("saveSearch body", req.params.searchSymbol);
-	console.log(" POSTed savedSearch", req.params);
-	console.log("saveSearch", req.params.searchId);
-	var username = req.params.user;
-	console.log('username', username);
-
-
-	User
-		.findOne({ username: username })
-		// .select(-password)
-		.exec(function(err, doc) {
-			console.log(doc);
-
-			if (err) {
-				console.log("Error finding searches");
-				res
-					.status(500)
-					.json(err);
-			}
-			else if (!doc) {
-				console.log("searches not in database");
-				res
-					.status(404)
-					.json({
-						"message": "search not found " + doc
-					});
-
-			}
-			if (doc) {
-				// _addSearch(req, res, doc);
-				doc.searches.push({
-					savedSearchId: req.params.searchId,
-					savedSearchSymbol: req.params.searchSymbol
-				});
-
-				doc.save(function(err, userUpdated) {
-					if (err) {
-						res
-							.status(500)
-							.json(err);
-					}
-					else {
-						res
-							.status(201)
-							.json(userUpdated.searches[userUpdated.searches.length - 1]);
-					}
-				});
-			}
-			// else {
-			// 	res
-			// 		.status(200)
-			// 		.json(doc);
-			// }
-		});
-	module.exports.userSearched = function(req, res) {
-		console.log('Get the searched Stocks');
 
 		User
 			.findOne({ username: username })
-			.select('searches')
-			.exec(function(err, search) {
-				console.log('userSearched', search)
+			// .select(-password)
+			.exec(function(err, doc) {
+				console.log(doc);
+
 				if (err) {
-					console.log('Error finding searches');
+					console.log("Error finding user");
 					res
 						.status(500)
 						.json(err);
 				}
-				// }else {
-				// 	console.log("Found searches", search.length);
-				// 	Stock
-				// 		.find({_id: 'search.searches.savedSearch'})
-				// 		.exec(function(err, stock){
-				// 		res
-				// 		.json(stock);
-				// 		})
+				else if (!doc) {
+					console.log("user not in database");
+					res
+						.status(404)
+						.json({
+							"message": "user not found " + doc
+						});
 
+				}
+				if (doc) {
+					// _addSearch(req, res, doc);
+					doc.saved.push({
+						savedId: req.params.saveId,
+						savedSymbol: req.params.saveSymbol
+					});
 
+					doc.save(function(err, userUpdated) {
+						if (err) {
+							res
+								.status(500)
+								.json(err);
+						}
+						else {
+							res
+								.status(201)
+								.json(userUpdated.saved[userUpdated.saved.length - 1]);
+						}
+					});
+				}
 			});
-
-
-
-	};
-
 };
+		// var _addSaved = function(req, res, user) {
+		// 	// console.log('_addSaved', req.body);
+		// 	user.saved.push({
+		// 		savedStock: req.body.savedId
+		// 	});
+		// 	user.save(function(err, userUpdated) {
+		// 		if (err) {
+		// 			res
+		// 				.status(500)
+		// 				.json(err);
+		// 		}
+		// 		else {
+		// 			res
+		// 				.status(201)
+		// 				.json(userUpdated.saved[userUpdated.saved.length - 1]);
+		// 		}
+		// 	});
+		// };
+
+		// module.exports.savedStock = function(req, res) {
+		// 	console.log(" POST savedStock", req.params);
+
+		// 	var username = req.params.user;
+		// 	console.log('username', username);
+
+
+		// 	User
+		// 		.findOne({ username: username })
+		// 		// .select(-password)
+		// 		.exec(function(err, doc) {
+		// 			console.log(doc);
+
+		// 			if (err) {
+		// 				console.log("Error finding saved");
+		// 				res
+		// 					.status(500)
+		// 					.json(err);
+		// 			}
+		// 			else if (!doc) {
+		// 				console.log("Saved not in database");
+		// 				res
+		// 					.status(404)
+		// 					.json({
+		// 						"message": "search not found " + doc
+		// 					});
+
+		// 			}
+		// 			if (doc) {
+		// 				_addSaved(req, res, doc);
+		// 			}
+		// 			// else {
+		// 			// 	res
+		// 			// 		.status(200)
+		// 			// 		.json(doc);
+		// 			// }
+		// 		});
+		// };
+		module.exports.getUser = function(req, res) {
+			var username = req.params.user;
+			User
+				.findOne({ username: username })
+				.exec(function(err, doc) {
+					if (err) {
+						console.log("Error finding saved");
+						res
+							.status(500)
+							.json(err);
+					}
+					else if (!doc) {
+						console.log("Saved not in database");
+						res
+							.status(404)
+							.json({
+								"message": "search not found " + doc
+							});
+
+					}
+					if (doc) {
+						res
+							.status(200)
+							.json(doc);
+					}
+				});
+		};
+
+		// var _addSearch = function(req, res, user) {
+		// 	// console.log('_addSaved', req.body);
+		// 	user.searches.push({
+		// 		savedSearchId: req.params.searchId,
+		// 		savedSearchSymbol: req.params.searchSymbol
+		// 	});
+
+		// 	user.save(function(err, userUpdated) {
+		// 		if (err) {
+		// 			res
+		// 				.status(500)
+		// 				.json(err);
+		// 		}
+		// 		else {
+		// 			res
+		// 				.status(201)
+		// 				.json(userUpdated.searches[userUpdated.searches.length - 1]);
+		// 		}
+		// 	});
+		// };
+
+		module.exports.saveSearch = function(req, res) {
+			console.log("saveSearch body", req.params.searchSymbol);
+			console.log(" POSTed savedSearch", req.params);
+			console.log("saveSearch", req.params.searchId);
+			var username = req.params.user;
+			console.log('username', username);
+
+
+			User
+				.findOne({ username: username })
+				// .select(-password)
+				.exec(function(err, doc) {
+					console.log(doc);
+
+					if (err) {
+						console.log("Error finding searches");
+						res
+							.status(500)
+							.json(err);
+					}
+					else if (!doc) {
+						console.log("searches not in database");
+						res
+							.status(404)
+							.json({
+								"message": "search not found " + doc
+							});
+
+					}
+					if (doc) {
+						// _addSearch(req, res, doc);
+						doc.searches.push({
+							savedSearchId: req.params.searchId,
+							savedSearchSymbol: req.params.searchSymbol
+						});
+
+						doc.save(function(err, userUpdated) {
+							if (err) {
+								res
+									.status(500)
+									.json(err);
+							}
+							else {
+								res
+									.status(201)
+									.json(userUpdated.searches[userUpdated.searches.length - 1]);
+							}
+						});
+					}
+					// else {
+					// 	res
+					// 		.status(200)
+					// 		.json(doc);
+					// }
+				});
+			module.exports.userSearched = function(req, res) {
+				console.log('Get the searched Stocks');
+
+				User
+					.findOne({ username: username })
+					.select('searches')
+					.exec(function(err, search) {
+						console.log('userSearched', search)
+						if (err) {
+							console.log('Error finding searches');
+							res
+								.status(500)
+								.json(err);
+						}
+						// }else {
+						// 	console.log("Found searches", search.length);
+						// 	Stock
+						// 		.find({_id: 'search.searches.savedSearch'})
+						// 		.exec(function(err, stock){
+						// 		res
+						// 		.json(stock);
+						// 		})
+
+
+					});
+
+
+
+			};
+
+		};
