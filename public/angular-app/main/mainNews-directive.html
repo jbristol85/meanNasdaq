@@ -1,7 +1,9 @@
 <h1>{{ vm.title }}</h1>
-<!--<div ng-controller="MainController as vm" >-->
+<p>{{vm.articles[0].title}}</p>
+
     <ul>
-        <li ng-repeat="article in vm.articles">{{ article.author }}</li>
+       
+        <li ng-repeat="article in vm.articles" >{{ article.source }}</li>
       </ul>  
     <!--    <div  class="card" style="width: 18rem;" >-->
       <!--<div class="card-body">-->
@@ -12,4 +14,4 @@
       <!--  <a href="#" class="card-link">Another link</a>-->
       <!--</div>-->
     <!--</div>-->
-<!--</div>-->
+</div

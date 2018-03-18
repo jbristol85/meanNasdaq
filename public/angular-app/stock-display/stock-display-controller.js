@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('meannasdaq').controller('StockController', StockController);
+angular.module('meannasdaq').controller('StockController', StockController); 
 
 function StockController ($route, $routeParams, $location, $window, stockDataFactory, AuthFactory, jwtHelper){
 	var vm = this;
